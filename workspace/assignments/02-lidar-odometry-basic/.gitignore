@@ -4,3 +4,6 @@ devel
 install
 logs
 output
+.vscode
+.catkin_workspace
+slam_data/

@@ -92,6 +92,7 @@ bool FrontEnd::InitRegistration(std::shared_ptr<RegistrationInterface>& registra
     else if (registration_method == "YOUR_OWN_METHOD") {
         /*
             TODO: register your custom implementation here
+
         */
     }
     else {

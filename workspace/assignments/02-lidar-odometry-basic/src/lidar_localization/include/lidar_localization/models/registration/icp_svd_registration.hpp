@@ -40,7 +40,7 @@ class ICPSVDRegistration: public RegistrationInterface {
 
   private:
     size_t GetCorrespondence(
-      const CloudData::CLOUD_PTR &input_source, 
+      const CloudData::CLOUD_PTR &input_source,
       std::vector<Eigen::Vector3f> &xs,
       std::vector<Eigen::Vector3f> &ys
     );

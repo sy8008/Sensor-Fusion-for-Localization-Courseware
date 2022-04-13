@@ -7,6 +7,7 @@
 #include <memory>
 
 #include <ros/ros.h>
+#include <iostream>
 
 #include "lidar_localization/global_defination/global_defination.h"
 #include "glog/logging.h"
@@ -14,6 +15,8 @@
 #include "lidar_localization/front_end/front_end_flow.hpp"
 
 #include <lidar_localization/saveMap.h>
+
+#include "lidar_localization/tools/file_manager.hpp"
 
 using namespace lidar_localization;
 
@@ -31,8 +34,11 @@ bool save_map_callback(
 int main(int argc, char *argv[]) {
     google::InitGoogleLogging(argv[0]);
     FLAGS_log_dir = WORK_SPACE_PATH + "/Log";
-    FLAGS_alsologtostderr = 1;
 
+    FLAGS_alsologtostderr = 1;
+    std::cout << "glog dir: " << FLAGS_log_dir << std::endl;
+
+    FileManager::CreateDirectory(FLAGS_log_dir);
     ros::init(argc, argv, "front_end_node");
     ros::NodeHandle nh;
 
