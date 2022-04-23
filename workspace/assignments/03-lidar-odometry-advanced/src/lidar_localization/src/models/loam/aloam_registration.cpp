@@ -62,12 +62,16 @@ bool CeresALOAMRegistration::AddEdgeFactor(
     const Eigen::Vector3d &target_x, const Eigen::Vector3d &target_y,
     const double &ratio
 ) {
-    ceres::CostFunction *factor_edge = LidarEdgeFactor::Create(
-        source, 
-        target_x, target_y, 
-        ratio
-    );
-    
+//    ceres::CostFunction *factor_edge = LidarEdgeFactor::Create(
+//        source,
+//        target_x, target_y,
+//        ratio
+//    );
+        ceres::CostFunction *factor_edge = new LidarEdgeFactor(
+                source,
+                target_x, target_y,
+                ratio
+        );
     problem_.AddResidualBlock(
         factor_edge, 
         config_.loss_function_ptr, 
@@ -91,12 +95,17 @@ bool CeresALOAMRegistration::AddPlaneFactor(
     const Eigen::Vector3d &target_x, const Eigen::Vector3d &target_y, const Eigen::Vector3d &target_z,
     const double &ratio
 ) {
-    ceres::CostFunction *factor_plane = LidarPlaneFactor::Create(
-        source, 
-        target_x, target_y, target_z, 
-        ratio
-    );
+//    ceres::CostFunction *factor_plane = LidarPlaneFactor::Create(
+//        source,
+//        target_x, target_y, target_z,
+//        ratio
+//    );
 
+    ceres::CostFunction *factor_plane = new LidarPlaneFactor(
+                source,
+                target_x, target_y, target_z,
+                ratio
+        );
     problem_.AddResidualBlock(
         factor_plane,
         config_.loss_function_ptr, 
