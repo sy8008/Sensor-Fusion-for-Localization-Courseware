@@ -38,6 +38,7 @@ class InterfaceGraphOptimizer {
   
   protected:
     int max_iterations_num_ = 512;
+    // int max_iterations_num_ = 512;
 };
 } // namespace lidar_localization
 #endif

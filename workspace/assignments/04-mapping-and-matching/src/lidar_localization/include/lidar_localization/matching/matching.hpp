@@ -31,6 +31,8 @@ class Matching {
     bool SetInitPose(const Eigen::Matrix4f& init_pose);
     bool SetInited(void);
 
+    bool ResetInited(void);
+
     Eigen::Matrix4f GetInitPose(void);
     void GetGlobalMap(CloudData::CLOUD_PTR& global_map);
     CloudData::CLOUD_PTR& GetLocalMap();

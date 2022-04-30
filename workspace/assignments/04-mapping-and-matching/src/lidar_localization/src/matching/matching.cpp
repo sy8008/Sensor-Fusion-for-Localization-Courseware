@@ -30,6 +30,7 @@ Matching::Matching()
 
 bool Matching::InitWithConfig() {
     std::string config_file_path = WORK_SPACE_PATH + "/config/matching/matching.yaml";
+    std::cout << "config file path: " << std::endl;
     YAML::Node config_node = YAML::LoadFile(config_file_path);
 
     LOG(INFO) << std::endl
@@ -161,6 +162,18 @@ bool Matching::Update(const CloudData& cloud_data, Eigen::Matrix4f& cloud_pose) 
 
     // matching:
     CloudData::CLOUD_PTR result_cloud_ptr(new CloudData::CLOUD());
+
+    // self added code
+//    if(!has_inited_){
+//        double gps_x = current_gnss_pose_(0,3);
+//        double gps_y = current_gnss_pose_(1,3);
+//        double gps_z = current_gnss_pose_(2,3);
+//
+//        this->ResetLocalMap(gps_x,gps_y,gps_z);
+//        result_cloud_ptr = this->GetLocalMap();
+//        this-SetInited();
+//    }
+
     registration_ptr_->ScanMatch(filtered_cloud_ptr, predict_pose, result_cloud_ptr, cloud_pose);
     pcl::transformPointCloud(*cloud_data.cloud_ptr, *current_scan_ptr_, cloud_pose);
 
@@ -236,6 +249,12 @@ bool Matching::SetInitPose(const Eigen::Matrix4f& init_pose) {
 
 bool Matching::SetInited(void) {
     has_inited_ = true;
+
+    return true;
+}
+
+bool Matching::ResetInited(void) {
+    has_inited_ = false;
 
     return true;
 }

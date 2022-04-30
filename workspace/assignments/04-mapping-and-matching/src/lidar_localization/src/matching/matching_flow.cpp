@@ -5,7 +5,9 @@
  */
 #include "lidar_localization/matching/matching_flow.hpp"
 #include "glog/logging.h"
+#include "lidar_localization/data_pretreat/data_pretreat_flow.hpp"
 #include "lidar_localization/global_defination/global_defination.h"
+#include "lidar_localization/sensor_data/gnss_data.hpp"
 
 namespace lidar_localization {
 MatchingFlow::MatchingFlow(ros::NodeHandle& nh) {
@@ -110,11 +112,18 @@ bool MatchingFlow::UpdateMatching() {
         //
         // Hints: You can use SetGNSSPose & SetScanContextPose from matching.hpp
         //
+//        GNSSData::InitOriginPosition(GNSSData::latitude,GNSSData::longitude,GNSSData::altitude);
+
+        matching_ptr_->SetGNSSPose(current_gnss_data_.pose);
+
+//        matching_ptr_->SetScanContextPose(current_cloud_data_);
 
         // naive implementation:
-        Eigen::Matrix4f init_pose = Eigen::Matrix4f::Identity();
+//        Eigen::Matrix4f init_pose = Eigen::Matrix4f::Identity();
+//        Eigen::Matrix4f init_pose = matching_ptr_->GetInitPose();
         
-        matching_ptr_->SetInitPose(init_pose);
+//        matching_ptr_->SetInitPose(init_pose);
+//        matching_ptr_->ResetInited();
         matching_ptr_->SetInited();
     }
 
