@@ -34,6 +34,17 @@ bool KITTIFiltering::Init(const CloudData &init_scan,
   if (SetInitScan(init_scan)) {
     current_vel_ = init_vel;
 
+      // added code
+//      CloudData::CLOUD_PTR filtered_cloud_ptr(new CloudData::CLOUD());
+//      current_scan_filter_ptr_->Filter(init_scan.cloud_ptr, filtered_cloud_ptr);
+//      // matching:
+//      CloudData::CLOUD_PTR result_cloud_ptr(new CloudData::CLOUD());
+//      registration_ptr_->ScanMatch(filtered_cloud_ptr, init_pose_,
+//                                   result_cloud_ptr, init_pose_);
+//      ResetLocalMap(init_pose_(0, 3), init_pose_(1, 3), init_pose_(2, 3));
+      // added code end
+
+
     kalman_filter_ptr_->Init(current_vel_.cast<double>(), init_imu_data);
 
     return true;

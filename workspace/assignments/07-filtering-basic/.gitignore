@@ -5,3 +5,7 @@ install
 logs
 .catkin_workspace
 .vscode/
+cmake-build-debug
+*.bin
+*.pcd
+*.proto

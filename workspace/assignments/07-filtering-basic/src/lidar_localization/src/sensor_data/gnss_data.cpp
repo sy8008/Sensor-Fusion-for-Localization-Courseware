@@ -17,8 +17,8 @@ GeographicLib::LocalCartesian lidar_localization::GNSSData::geo_converter;
 
 namespace lidar_localization {
 void GNSSData::InitOriginPosition() {
-    geo_converter.Reset(latitude, longitude, altitude);
-
+//    geo_converter.Reset(latitude, longitude, altitude);
+    geo_converter.Reset(48.98265066, 8.39044984, 116.39585003);
     origin_latitude = latitude;
     origin_longitude = longitude;
     origin_altitude = altitude;
