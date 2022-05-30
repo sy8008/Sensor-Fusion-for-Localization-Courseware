@@ -5,3 +5,5 @@ install
 logs
 .catkin_workspace
 .vscode/
+cmake-build-debug
+slam_data

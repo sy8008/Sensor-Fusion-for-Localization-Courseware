@@ -155,6 +155,7 @@ bool GNSSINSSimFiltering::InitFusion(const YAML::Node& config_node) {
     // set up fusion strategy:
     CONFIG.FUSION_STRATEGY_ID["position_velocity"] = KalmanFilter::MeasurementType::POSI_VEL;
 
+
     std::string fusion_strategy = config_node["fusion_strategy"].as<std::string>();
 
     if ( CONFIG.FUSION_STRATEGY_ID.end() != CONFIG.FUSION_STRATEGY_ID.find(fusion_strategy) ) {
